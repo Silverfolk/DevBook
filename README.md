@@ -21,41 +21,74 @@
     }
   };
 
+### npm Package request Deprecated
+- Replace request with axios for fetching GitHub repositories.
+   ```javascript
+   npm i axios
+   cd client
+  npm uninstall axios
 
-Introduction
+### uuid Package Changes
+ - Change import in client/src/actions/alert.js.
+   ```javascript
+   import { v4 as uuidv4 } from 'uuid';
 
-DevBook is a vibrant online community built for developers. Create your profile, connect with fellow coders, share code snippets, discuss tech trends, and discover exciting job opportunities.
+### Addition of normalize-url Package
+ - Added normalize-url to normalize entered URLs in routes/api/profile.js.
+   
+### Fix Broken Links in Gravatar
+- Use normalize-url to fix broken links in Gravatar in routes/api/users.js.
+### Redux Subscription for Local Storage Management
+- Use Redux subscription to manage local storage in client/src/store.js.
+- Update client/src/utils/setAuthToken.js and dependent files.
+  
+### Component Reuse
+- Combined EditProfile and CreateProfile into ProfileForm.js.
+  
+### Log User Out on Token Expiration
+- Implemented Axios interceptor to log out on token expiration in utils/api.js.
+  
+### Remove Moment.js
+- Replaced with the browser's built-in Intl API.
+- Create utils/formatDate.js for date formatting.
+  
+### React Router V6
+- Update to React Router V6, follow the migration guide.
+- Replace <Switch /> with <Routes /> and adjust routing components.
+  
+### Quick Start 🚀
+### Setup
+- Add a default.json file in the config folder with MongoDB URI, JWT secret, and GitHub token.
+  ```javascript
+   {
+  "mongoURI": "<your_mongoDB_Atlas_uri_with_credentials>",
+  "jwtSecret": "secret",
+  "githubToken": "<your_secret_access_token>"
+  }
+- Install server dependencies.
+   ```javascript
+   npm install
+- Install client dependencies.
+   ```javascript
+   cd client
+   npm install
 
-What's new since the course?
+### Build for Production
+- Build the client for production.
+    ```javascript
+      cd client
+    npm run build
 
-GitHub API Authentication: Say goodbye to URL parameters! Securely access GitHub with access tokens. See setup instructions for safe storage.
-Package updates:
-request is out, axios is in: We switched to a more robust HTTP request library.
-uuid upgrade: Import using v4 as uuidv4 to handle the updated default export.
-Introducing normalize-url: No more broken links! This package ensures valid website and social media URLs.
-Moment.js sunset: We adopted the browser's built-in Intl API for date formatting.
-React Router V6: Embrace the latest routing with new components and hooks like <Routes> and useParams.
-Redux subscription for auth: Stay logged in effortlessly! A dedicated subscription manages local storage and axios headers for your token.
-Component consolidation: EditProfile and CreateProfile united as ProfileForm.js for streamlined code.
-Automatic logout on token expiration: Always secure, DevBook logs you out of expired sessions instantly.
-Updated quick start: Follow the revised instructions to set up DevBook with ease.
-Get started quickly:
+### Test Production Before Deploy
+- After building the client, go to the project root and run:
+- Linux/Unix:
+  ```javascript
+    NODE_ENV=production node server.js
+- Windows (Cmd Prompt or Powershell):
+    ```javascript
+      $env:NODE_ENV="production"
+    node server.js
 
-Configure your secrets: Create a .env file in the config folder with your MongoDB Atlas URI, JWT secret, and GitHub access token.
-Install dependencies: Run npm install in the project root, then cd client && npm install in the client folder.
-Run server and client: Start both with npm run dev.
-Build for production: Prepare for deployment with cd client && npm run build.
-Test production build:
-Set environment variable: NODE_ENV=production (Linux/Unix) or $env:NODE_ENV="production" (Windows).
-Run server: node server.js.
-Open DevBook! Visit http://localhost:5000/ in your browser.
-Further notes:
-
-For detailed implementation specifics, refer to the project code.
-This readme highlights key updates; explore the code for comprehensive information.
-We welcome contributions! Help us make DevBook even better!
-Join the DevBook community and code collaboratively!
-
-
+- Open http://localhost:5000/ in your browser.
 
 
