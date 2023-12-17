@@ -1,6 +1,5 @@
 # DevBook - A Social Site for Developers
 
-## Updates Since Course Published
 
 ### GitHub API Authentication Changes
 - GitHub has deprecated authentication via URL query parameters.
